@@ -12,6 +12,7 @@ export const MainContainer = styled.div`
   margin-top: 40px;
   justify-content: space-between;
   align-items: center;
+  gap: 10px;
 `;
 export const InfoContainer = styled.div`
   display: flex;
