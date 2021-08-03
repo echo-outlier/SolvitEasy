@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/SolvitEasy/static/css/main.9c62130a.chunk.css",
-    "main.js": "/SolvitEasy/static/js/main.eca480ec.chunk.js",
-    "main.js.map": "/SolvitEasy/static/js/main.eca480ec.chunk.js.map",
+    "main.js": "/SolvitEasy/static/js/main.3b9254f2.chunk.js",
+    "main.js.map": "/SolvitEasy/static/js/main.3b9254f2.chunk.js.map",
     "runtime-main.js": "/SolvitEasy/static/js/runtime-main.d8cc9a1a.js",
     "runtime-main.js.map": "/SolvitEasy/static/js/runtime-main.d8cc9a1a.js.map",
     "static/js/2.5a03693b.chunk.js": "/SolvitEasy/static/js/2.5a03693b.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.d8cc9a1a.js",
     "static/js/2.5a03693b.chunk.js",
     "static/css/main.9c62130a.chunk.css",
-    "static/js/main.eca480ec.chunk.js"
+    "static/js/main.3b9254f2.chunk.js"
   ]
 }
