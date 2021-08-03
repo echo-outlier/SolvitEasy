@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/aktupidit/static/css/main.3807ffda.chunk.css",
+    "main.js": "/aktupidit/static/js/main.43b968a9.chunk.js",
+    "main.js.map": "/aktupidit/static/js/main.43b968a9.chunk.js.map",
+    "runtime-main.js": "/aktupidit/static/js/runtime-main.36212694.js",
+    "runtime-main.js.map": "/aktupidit/static/js/runtime-main.36212694.js.map",
+    "static/js/2.d9b0f836.chunk.js": "/aktupidit/static/js/2.d9b0f836.chunk.js",
+    "static/js/2.d9b0f836.chunk.js.map": "/aktupidit/static/js/2.d9b0f836.chunk.js.map",
+    "index.html": "/aktupidit/index.html",
+    "static/css/main.3807ffda.chunk.css.map": "/aktupidit/static/css/main.3807ffda.chunk.css.map",
+    "static/js/2.d9b0f836.chunk.js.LICENSE.txt": "/aktupidit/static/js/2.d9b0f836.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.36212694.js",
+    "static/js/2.d9b0f836.chunk.js",
+    "static/css/main.3807ffda.chunk.css",
+    "static/js/main.43b968a9.chunk.js"
+  ]
+}
