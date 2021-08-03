@@ -6,6 +6,7 @@ const hoverColor = "#294580";
 
 export const MainContainer = styled.div`
   display: flex;
+  flex-wrap: wrap;
   width: 80%;
   margin: auto;
   margin-top: 40px;
@@ -25,7 +26,7 @@ export const Info = styled.div`
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    margin-right:5px;
+    margin-right: 5px;
     width: 13px;
     height: 13px;
     background-color: #1cd39c;

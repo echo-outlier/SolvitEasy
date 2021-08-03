@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/aktupidit/static/css/main.3807ffda.chunk.css",
-    "main.js": "/aktupidit/static/js/main.43b968a9.chunk.js",
-    "main.js.map": "/aktupidit/static/js/main.43b968a9.chunk.js.map",
-    "runtime-main.js": "/aktupidit/static/js/runtime-main.36212694.js",
-    "runtime-main.js.map": "/aktupidit/static/js/runtime-main.36212694.js.map",
-    "static/js/2.d9b0f836.chunk.js": "/aktupidit/static/js/2.d9b0f836.chunk.js",
-    "static/js/2.d9b0f836.chunk.js.map": "/aktupidit/static/js/2.d9b0f836.chunk.js.map",
-    "index.html": "/aktupidit/index.html",
-    "static/css/main.3807ffda.chunk.css.map": "/aktupidit/static/css/main.3807ffda.chunk.css.map",
-    "static/js/2.d9b0f836.chunk.js.LICENSE.txt": "/aktupidit/static/js/2.d9b0f836.chunk.js.LICENSE.txt"
+    "main.css": "/SolvitEasy/static/css/main.9c62130a.chunk.css",
+    "main.js": "/SolvitEasy/static/js/main.eca480ec.chunk.js",
+    "main.js.map": "/SolvitEasy/static/js/main.eca480ec.chunk.js.map",
+    "runtime-main.js": "/SolvitEasy/static/js/runtime-main.d8cc9a1a.js",
+    "runtime-main.js.map": "/SolvitEasy/static/js/runtime-main.d8cc9a1a.js.map",
+    "static/js/2.5a03693b.chunk.js": "/SolvitEasy/static/js/2.5a03693b.chunk.js",
+    "static/js/2.5a03693b.chunk.js.map": "/SolvitEasy/static/js/2.5a03693b.chunk.js.map",
+    "index.html": "/SolvitEasy/index.html",
+    "static/css/main.9c62130a.chunk.css.map": "/SolvitEasy/static/css/main.9c62130a.chunk.css.map",
+    "static/js/2.5a03693b.chunk.js.LICENSE.txt": "/SolvitEasy/static/js/2.5a03693b.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.36212694.js",
-    "static/js/2.d9b0f836.chunk.js",
-    "static/css/main.3807ffda.chunk.css",
-    "static/js/main.43b968a9.chunk.js"
+    "static/js/runtime-main.d8cc9a1a.js",
+    "static/js/2.5a03693b.chunk.js",
+    "static/css/main.9c62130a.chunk.css",
+    "static/js/main.eca480ec.chunk.js"
   ]
 }
