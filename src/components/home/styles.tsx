@@ -54,7 +54,7 @@ export const Question = styled.div`
     }
     .cross {
       /* margin-left: 10px; */
-      font-size:15px;
+      font-size: 15px;
       fill: red;
     }
   }
@@ -74,6 +74,7 @@ export const Options = styled.div<options>`
     }
   }};
   border-radius: 5px;
+  word-wrap: break-word;
   &:hover {
     cursor: pointer;
   }
