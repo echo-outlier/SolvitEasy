@@ -26,7 +26,7 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     Login: (state, action) => {
-      window.location.replace("/home");
+      window.location.replace("/SolvitEasy/home");
       state.profile.name = action.payload.profile[0].displayName;
       state.profile.email = action.payload.profile[0].email;
       state.profile.photo = action.payload.profile[0].photoURL;

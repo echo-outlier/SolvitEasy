@@ -82,6 +82,8 @@ export const Options = styled.div<options>`
       return "#eee";
     }
   }};
+  border-radius: 5px;
+  word-wrap: break-word;
   &:hover {
     cursor: pointer;
   }
