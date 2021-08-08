@@ -36,7 +36,7 @@ const authSlice = createSlice({
     Logout: (state) => {
       localStorage.removeItem("persist:root");
       state = { ...initialState };
-      window.location.replace("/");
+      window.location.replace("/SolvitEasy");
     },
     SetLoading: (state, action) => {
       state.loading = action.payload;
