@@ -4,11 +4,21 @@ import Topbar from "../navbar/topbar/topbar";
 import { useEffect } from "react";
 import Searchbar from "./searchbar";
 import { useSelector } from "react-redux";
-import { QuestionContainer, Options, Question, OptionTop } from "./styles";
+import {
+  QuestionContainer,
+  OptionContainer,
+  Options,
+  Question,
+  OptionTop,
+  Number,
+} from "./styles";
+import { Flex } from "../home/styles";
 import { RootState } from "../../store/store";
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 import { find_percentage } from "../percentage/percentage";
+import { AiFillCopy } from "react-icons/ai";
+import { CopyQuestion } from "../home/home";
 
 const calcPercent = (number: any, percentage: any) => {
   const result = number / percentage;
@@ -33,7 +43,7 @@ const Answers = () => {
     const location = history.location;
     const items: any = document.querySelectorAll(".item");
     for (let i = 0; i < items.length; i++) {
-      const path = location.pathname.slice(1, location.pathname.length);
+      const path = location.pathname;
       if (path === items[i].dataset.name) {
         items[i].classList.add("active");
       } else {
@@ -74,44 +84,72 @@ const Answers = () => {
         {filtered_questions.map((question: any) => {
           return (
             <React.Fragment key={question.id}>
-              <Question>
-                <b>
-                  Ques{" "}
-                  {question.answers[userId].ques_num
-                    ? question.answers[userId].ques_num.number
-                    : null}
-                  :
-                </b>{" "}
-                {question.question}
-              </Question>
-              <Options>
-                <OptionTop val={question.percentage.a}>
-                  {question.percentage.a != 0 ? question.percentage.a : null}
-                  {question.percentage.a != 0 ? "%" : null}
-                </OptionTop>
-                <b>A:</b> {question.option.a.value}
-              </Options>
-              <Options>
-                <OptionTop val={question.percentage.b}>
-                  {question.percentage.b != 0 ? question.percentage.b : null}
-                  {question.percentage.b != 0 ? "%" : null}
-                </OptionTop>
-                <b>B:</b> {question.option.b.value}
-              </Options>
-              <Options>
-                <OptionTop val={question.percentage.c}>
-                  {question.percentage.c != 0 ? question.percentage.c : null}
-                  {question.percentage.c != 0 ? "%" : null}
-                </OptionTop>
-                <b>C:</b> {question.option.c.value}
-              </Options>
-              <Options>
-                <OptionTop val={question.percentage.d}>
-                  {question.percentage.d != 0 ? question.percentage.d : null}
-                  {question.percentage.d != 0 ? "%" : null}
-                </OptionTop>
-                <b>D:</b> {question.option.d.value}
-              </Options>
+              <Flex>
+                <Question>
+                  <b>
+                    Ques{" "}
+                    {question.answers[userId].ques_num
+                      ? question.answers[userId].ques_num.number
+                      : null}
+                    :
+                  </b>{" "}
+                  {question.question}
+                </Question>
+                <OptionContainer>
+                  <AiFillCopy
+                    className="copy-btn"
+                    onClick={() => CopyQuestion(question.question)}
+                  />
+                </OptionContainer>
+              </Flex>
+
+              <OptionContainer>
+                <Options>
+                  <div>
+                    <b>A:</b> {question.option.a.value}
+                  </div>
+                  <OptionTop val={question.percentage.a}></OptionTop>
+                </Options>
+                {question.number.a ? (
+                  <Number>{question.number.a}</Number>
+                ) : null}
+              </OptionContainer>
+
+              <OptionContainer>
+                <Options>
+                  <div>
+                    <b>B:</b> {question.option.b.value}
+                  </div>
+                  <OptionTop val={question.percentage.b}></OptionTop>
+                </Options>
+                {question.number.b ? (
+                  <Number>{question.number.b}</Number>
+                ) : null}
+              </OptionContainer>
+
+              <OptionContainer>
+                <Options>
+                  <div>
+                    <b>C:</b> {question.option.c.value}
+                  </div>
+                  <OptionTop val={question.percentage.c}></OptionTop>
+                </Options>
+                {question.number.c ? (
+                  <Number>{question.number.c}</Number>
+                ) : null}
+              </OptionContainer>
+
+              <OptionContainer>
+                <Options>
+                  <div>
+                    <b>D:</b> {question.option.d.value}
+                  </div>
+                  <OptionTop val={question.percentage.d}></OptionTop>
+                </Options>
+                {question.number.d ? (
+                  <Number>{question.number.c}</Number>
+                ) : null}
+              </OptionContainer>
             </React.Fragment>
           );
         })}

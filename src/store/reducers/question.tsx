@@ -6,6 +6,7 @@ import { find_percentage } from "../../components/percentage/percentage";
 interface Props {
   questions: any;
   input: any;
+  loading: boolean;
 }
 
 const initialState: Props = {
@@ -19,6 +20,7 @@ const initialState: Props = {
       d: "",
     },
   },
+  loading: false,
 };
 
 const questionSlice = createSlice({
@@ -44,6 +46,9 @@ const questionSlice = createSlice({
     OptionError: (state) => {
       alert("Fill All Options");
     },
+    StartFetching: (state, action) => {
+      state.loading = true;
+    },
     Fetchquestions: (state, action) => {
       const temp: any = [];
       if (action.payload) {
@@ -55,15 +60,17 @@ const questionSlice = createSlice({
       } else {
         state.questions = [];
       }
+      state.loading = false;
     },
   },
 });
 
 export const CreateUserField = (questionid: any, userId: any): AppThunk => {
-  return (dispatch) => {
+  return (dispatch, getState) => {
     const quesRef = firebase
       .database()
-      .ref("Questions")
+      .ref("Groups")
+      .child(getState().group.active_group)
       .child(questionid)
       .child("answers");
     quesRef.once("value", (snapshot) => {
@@ -93,7 +100,8 @@ export const TickQuestion = (payload: any): AppThunk => {
   return (dispatch, getState) => {
     const checked_opt = firebase
       .database()
-      .ref("Questions")
+      .ref("Groups")
+      .child(getState().group.active_group)
       .child(payload.id)
       .child("answers")
       .child(payload.userId)
@@ -115,7 +123,7 @@ export const TickQuestion = (payload: any): AppThunk => {
   };
 };
 
-export const Addquestion = (): AppThunk => {
+export const Addquestion = (groupname: any): AppThunk => {
   return (dispatch, getState) => {
     const input = getState().ques.input;
 
@@ -130,6 +138,12 @@ export const Addquestion = (): AppThunk => {
         d: { value: input.options.d },
       },
       percentage: {
+        a: 0,
+        b: 0,
+        c: 0,
+        d: 0,
+      },
+      number: {
         a: 0,
         b: 0,
         c: 0,
@@ -156,9 +170,10 @@ export const Addquestion = (): AppThunk => {
       input.options.a != "" &&
       input.options.b != "" &&
       input.options.c != "" &&
-      input.options.d != ""
+      input.options.d != "" &&
+      input.question != ""
     ) {
-      const quesRef = firebase.database().ref("Questions");
+      const quesRef = firebase.database().ref("Groups").child(groupname);
       quesRef.push(ques);
       dispatch(CleanInput());
     } else {
@@ -167,13 +182,16 @@ export const Addquestion = (): AppThunk => {
   };
 };
 
-export const FetchQuestions = (): AppThunk => {
+export const FetchQuestions = (groupname: any): AppThunk => {
   return (dispatch) => {
-    const quesRef = firebase.database().ref("Questions");
-    quesRef.on("value", (snapshot) => {
-      const ques = snapshot.val();
-      dispatch(Fetchquestions(ques));
-    });
+    if (groupname) {
+      dispatch(StartFetching(true));
+      const quesRef = firebase.database().ref("Groups").child(groupname);
+      quesRef.on("value", (snapshot) => {
+        const ques = snapshot.val();
+        dispatch(Fetchquestions(ques));
+      });
+    }
   };
 };
 
@@ -181,32 +199,32 @@ export const ClearAnswer = (questions: any, id: any, userId: any) => {
   return (dispatch: any, getState: any) => {
     const quesRef = firebase
       .database()
-      .ref("Questions")
+      .ref("Groups")
+      .child(getState().group.active_group)
       .child(id)
       .child("answers")
       .child(userId)
       .child("saved");
     const quesRef1 = firebase
       .database()
-      .ref("Questions")
+      .ref("Groups")
+      .child(getState().group.active_group)
       .child(id)
       .child("answers")
-      .child(userId);
+      .child(userId)
+      .child("checked");
     let val: any = null;
-    quesRef1.once("value", (snapshot) => {
-      val = snapshot.val();
-      const options = {
-        a: false,
-        b: false,
-        c: false,
-        d: false,
-      };
-      quesRef.update({
-        ...options,
-      });
-      quesRef1.update({
-        ...options,
-      });
+    const options = {
+      a: false,
+      b: false,
+      c: false,
+      d: false,
+    };
+    quesRef.update({
+      ...options,
+    });
+    quesRef1.update({
+      ...options,
     });
 
     const all_ques = find_percentage(getState().ques.questions);
@@ -220,7 +238,8 @@ export const ClearAnswer = (questions: any, id: any, userId: any) => {
 
     const ques_percentage = firebase
       .database()
-      .ref("Questions")
+      .ref("Groups")
+      .child(getState().group.active_group)
       .child(id)
       .child("percentage");
     ques_percentage.update({
@@ -232,17 +251,20 @@ export const ClearAnswer = (questions: any, id: any, userId: any) => {
 export const SaveAnswer = (questions: any, id: any, userId: any): AppThunk => {
   return (dispatch, getState) => {
     let opt: any = null;
+    const groupname = getState().group.active_group;
 
     const checked_opt = firebase
       .database()
-      .ref("Questions")
+      .ref("Groups")
+      .child(groupname)
       .child(id)
       .child("answers")
       .child(userId)
       .child("checked");
     const saved_opt = firebase
       .database()
-      .ref("Questions")
+      .ref("Groups")
+      .child(groupname)
       .child(id)
       .child("answers")
       .child(userId)
@@ -284,7 +306,8 @@ export const SaveAnswer = (questions: any, id: any, userId: any): AppThunk => {
 
     const ques_percentage = firebase
       .database()
-      .ref("Questions")
+      .ref("Groups")
+      .child(groupname)
       .child(id)
       .child("percentage");
     ques_percentage.update({
@@ -294,10 +317,11 @@ export const SaveAnswer = (questions: any, id: any, userId: any): AppThunk => {
 };
 
 export const SaveQues_Num = (id: any, userId: any, number: any): AppThunk => {
-  return (dispatch) => {
+  return (dispatch, getState) => {
     const ques_num = firebase
       .database()
-      .ref("Questions")
+      .ref("Groups")
+      .child(getState().group.active_group)
       .child(id)
       .child("answers")
       .child(userId)
@@ -308,6 +332,11 @@ export const SaveQues_Num = (id: any, userId: any, number: any): AppThunk => {
   };
 };
 
-export const { Fetchquestions, ChangeInput, CleanInput, OptionError } =
-  questionSlice.actions;
+export const {
+  Fetchquestions,
+  ChangeInput,
+  CleanInput,
+  OptionError,
+  StartFetching,
+} = questionSlice.actions;
 export default questionSlice.reducer;

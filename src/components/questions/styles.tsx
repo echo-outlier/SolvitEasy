@@ -56,6 +56,9 @@ export const Container = styled.div`
   textarea {
     outline: none;
     border: none;
+    border-radius: 5px;
+    padding: 5px;
+    resize: none;
   }
   #question {
     margin-top: 20px;

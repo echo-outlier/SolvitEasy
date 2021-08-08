@@ -6,19 +6,19 @@ import { RootState } from "../../store/store";
 import { ChangeInput, Addquestion } from "../../store/reducers/question";
 import { Div } from "./styles";
 import { Question, QuesContainer } from "./styles";
-import styled from "styled-components";
 import Topbar from "../navbar/topbar/topbar";
 import { useHistory } from "react-router-dom";
 const Newques = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const [questions, question, options, token] = useSelector(
+  const [questions, question, options, token, groupname] = useSelector(
     (state: RootState) => {
       return [
         state.ques.questions,
         state.ques.input.question,
         state.ques.input.options,
         state.auth.idtoken,
+        state.group.active_group,
       ];
     }
   );
@@ -35,7 +35,7 @@ const Newques = () => {
     const location = history.location;
     const items: any = document.querySelectorAll(".item");
     for (let i = 0; i < items.length; i++) {
-      const path = location.pathname.slice(1, location.pathname.length);
+      const path = location.pathname;
       if (path === items[i].dataset.name) {
         items[i].classList.add("active");
       } else {
@@ -65,6 +65,7 @@ const Newques = () => {
     } else setdisable((prevstate) => false);
     set_filtered_questions(ques);
   }, [question, questions]);
+
   const InputChangeHandler = (e: any) => {
     dispatch(ChangeInput({ type: e.target.name, value: e.target.value }));
   };
@@ -82,15 +83,17 @@ const Newques = () => {
           onChange={(e) => InputChangeHandler(e)}
         />
         <QuesContainer>
-          {filtered_questions.map((question: any) => {
-            return (
-              <React.Fragment key={question.id}>
-                <Question>
-                  <b>Ques {question?.count}:</b> {question.question}
-                </Question>
-              </React.Fragment>
-            );
-          })}
+          {question !== ""
+            ? filtered_questions.map((question: any) => {
+                return (
+                  <React.Fragment key={question.id}>
+                    <Question>
+                      <b>Ques {question?.count}:</b> {question.question}
+                    </Question>
+                  </React.Fragment>
+                );
+              })
+            : null}
         </QuesContainer>
         {Object.keys(options).map((option) => {
           return (
@@ -108,7 +111,7 @@ const Newques = () => {
           <Div
             disable={disable}
             id="btn"
-            onClick={() => dispatch(Addquestion())}
+            onClick={() => dispatch(Addquestion(groupname))}
           >
             Save
           </Div>

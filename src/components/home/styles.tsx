@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { keyframes } from "styled-components";
 
 const PrimaryColor = "#002B6B";
 const SecendoryColor = "#203E6B";
@@ -8,6 +9,18 @@ interface options {
   checked: any;
   saved: any;
 }
+
+export const QuestionContainer = styled.div`
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  width: 80%;
+  margin: 20px auto;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 100px;
+  background-color: white;
+`;
 
 export const Flex = styled.div`
   display: flex;
@@ -26,17 +39,6 @@ export const Flex = styled.div`
   }
 `;
 
-export const QuestionContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 80%;
-  margin: 20px auto;
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-bottom: 100px;
-  background-color: white;
-`;
-
 export const Question = styled.div`
   padding-top: 20px;
   padding-bottom: 20px;
@@ -46,34 +48,40 @@ export const Question = styled.div`
     position: relative;
     width: 50px;
     height: 50px;
-    /* display: inline-block; */
     .tick {
       font-size: 25px;
-      /* margin-left: 10px; */
-      fill: green;
+      color: green;
     }
     .cross {
-      /* margin-left: 10px; */
-      font-size:15px;
+      font-size: 15px;
       fill: red;
     }
   }
 `;
 
+const animate = keyframes`
+  0%{
+    width:10%
+  }
+  100%{
+    width:100%;
+  }
+`;
 export const Options = styled.div<options>`
   margin-top: 10px;
+  position: relative;
   font-size: 17px;
   padding: 10px 5px;
+  border-radius: 5px;
   background-color: ${(props) => {
     if (props.saved == true) {
-      return "#1cd39c";
+      return "#75d9a6";
     } else if (props.checked == true) {
       return "#d0eef4;";
     } else {
       return "#eee";
     }
   }};
-  border-radius: 5px;
   &:hover {
     cursor: pointer;
   }
@@ -137,11 +145,18 @@ export const Div = styled.div`
     input {
       font-size: 15px;
       height: 30px;
-      width: 30px;
+      width: 40px;
       border: none;
       outline: none;
       padding: 2px;
       border: 1px solid grey;
     }
   }
+`;
+
+export const Loader = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 `;
