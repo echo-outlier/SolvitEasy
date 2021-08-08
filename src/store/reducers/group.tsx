@@ -31,7 +31,7 @@ const groupSlice = createSlice({
     },
     GroupVerified: (state, action) => {
       state.active_group = action.payload;
-      window.location.replace("/SolvitEasy/home/questions");
+      window.location.assign("/SolvitEasy/home/questions");
     },
     SetErrortoNull: (state) => {
       state.error = "";
