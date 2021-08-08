@@ -18,22 +18,50 @@ export const InfoContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  --webkit-user-select: none;
+  svg {
+    font-size: 30px;
+    --webkit-user-select: none;
+    &:hover {
+      fill: ${PrimaryColor};
+    }
+  }
 `;
 
 export const Info = styled.div`
   font-size: 14px;
   font-weight: bold;
-  span {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  .inside-info {
+    display: inline-flex;
+    justify-content: center;
+    margin-right: 5px;
+    width: 25px;
+    height: 25px;
+    background-color: #75d9a6;
+    gap: 5px;
+  }
+  .badge {
     display: inline-flex;
     justify-content: center;
     align-items: center;
     margin-right: 5px;
-    width: 13px;
-    height: 13px;
-    background-color: #1cd39c;
+    width: 30px;
+    height: 30px;
   }
   #selected {
     background-color: #d0eef4;
+  }
+  .tick {
+    color: green !important;
+    font-size: 30px !important;
+  }
+  .cross {
+    color: red !important;
+    font-size: 30px !important;
   }
 `;
 

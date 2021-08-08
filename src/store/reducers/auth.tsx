@@ -7,7 +7,7 @@ interface Props {
   idtoken: any;
   userId: any;
   profile: any;
-  loading: boolean;
+  loading: any;
 }
 
 const initialState: Props = {
@@ -35,12 +35,8 @@ const authSlice = createSlice({
     },
     Logout: (state) => {
       localStorage.removeItem("persist:root");
-      state.profile.name = null;
-      state.profile.email = null;
-      state.profile.photo = null;
-      state.idtoken = null;
-      state.userId = null;
-      window.location.replace("/SolvitEasy");
+      state = { ...initialState };
+      window.location.replace("/");
     },
     SetLoading: (state, action) => {
       state.loading = action.payload;
@@ -51,11 +47,11 @@ const authSlice = createSlice({
 export const Authenticate = (flag: boolean): AppThunk => {
   return async (dispatch) => {
     if (flag) {
-      // dispatch(SetLoading(true));
       await firebase
         .auth()
         .signInWithPopup(new firebase.auth.GoogleAuthProvider())
         .then((res: any) => {
+          dispatch(SetLoading(true));
           if (res.user) {
             dispatch(
               Login({
@@ -65,10 +61,9 @@ export const Authenticate = (flag: boolean): AppThunk => {
               })
             );
           }
+          dispatch(SetLoading(false));
         })
-        .catch((error) => {
-          // dispatch(SetLoading(false));
-        });
+        .catch((error) => {});
     } else {
       firebase
         .auth()

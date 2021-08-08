@@ -1,5 +1,6 @@
 import authReducer from "./reducers/auth";
 import quesReducer from "./reducers/question";
+import groupReducer from "./reducers/group";
 import {
   configureStore,
   ThunkAction,
@@ -17,6 +18,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   auth: authReducer,
   ques: quesReducer,
+  group: groupReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

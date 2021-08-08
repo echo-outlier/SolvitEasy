@@ -9,7 +9,8 @@ import { Button } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import styled from "styled-components";
 import { FcGoogle } from "react-icons/fc";
-import { Backdrop, CircularProgress } from "@material-ui/core";
+import { CircularProgress } from "@material-ui/core";
+import { Loader } from "../home/styles";
 
 const PrimaryColor = "#002B6B";
 const SecendoryColor = "#203E6B";
@@ -70,15 +71,16 @@ const Login = () => {
       history.push("/home");
     }
   }, []);
-;
 
+  if (loading) {
+    return (
+      <Loader>
+        <CircularProgress />
+      </Loader>
+    );
+  }
   return (
     <React.Fragment>
-      {/* {loading ? (
-        <Backdrop className={classes.backdrop} open={true}>
-          <CircularProgress color="inherit" />
-        </Backdrop>
-      ) : ( */}
       <Div>
         <Card className={classes.root}>
           <Button
@@ -91,13 +93,6 @@ const Login = () => {
           </Button>
         </Card>
       </Div>
-      {/* )} */}
-
-      {/* <NavbarContainer>
-        <NavbarItem onClick={() => dispatch(Authenticate(true))}>
-          Login
-        </NavbarItem>
-      </NavbarContainer> */}
     </React.Fragment>
   );
 };

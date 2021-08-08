@@ -38,6 +38,13 @@ export const find_percentage = (questions: any) => {
         d: calcPercent(d, total) * 100,
       };
       single_ques.percentage = percentage;
+      single_ques.number = {
+        ...single_ques.number,
+        a: a,
+        b: b,
+        c: c,
+        d: d,
+      };
     }
     return single_ques;
   });
