@@ -1,46 +1,39 @@
-# Getting Started with Create React App
+## SolvitEasy
+A React/Redux Web App which helps you to quickly solve mcq questions among your classmates or colleague in a very less consuming time especially when everyone's questions are shuffled.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Hosted App Link 
+### https://echo-outlier.github.io/SolvitEasy/
+A demo group is already created to get familiar with the app whose password is <b>demo</b>
+<!-- 
+##### In starting I created this app thinking about only one group but now I have added group feature through which anyone can create a group and share name and password to everyone through which the other users can access. No one can access the group without the password. -->
 
-## Available Scripts
+## Description
+  
 
-In the project directory, you can run:
+<img width="1000" alt="image" src="https://user-images.githubusercontent.com/72267390/129455626-88fc5677-1ed4-4bb9-b655-4ebf1a5b39f7.png"><br/>
+#### Login Page -  It uses google authentication with firebase. You have to login through Google to use this app.<br/><br/><br/>
 
-### `npm start`
+<img width="1440" alt="image" src="https://user-images.githubusercontent.com/72267390/129458585-0f874c9a-c792-4e17-b16d-c6e81847d25d.png">
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+#### HomePage - List of Groups are shown here which are created by different users. 
+  
+<li>You can create a new group by clicking on <b>+</b> button at the bottom.</li>
+<li>you can Enter inside the group by typing the password of that group</li><br/><br/>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+<img width="1000" alt="image" src="https://user-images.githubusercontent.com/72267390/129458117-7b07f5aa-95eb-4a51-89b0-4d4c7f6f9e05.png">
 
-### `npm test`
+#### Question Page - This Page shows the List of Questions added by users in the group where user can mark their answer.<br/><br/></br>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+<img width="1440" alt="image" src="https://user-images.githubusercontent.com/72267390/129458134-c695cf72-7961-49f3-9168-65b0a44c7467.png">
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### Answer Page -- This Page shows answer marked by users in percentage and numbers. The GreenBar represents the percentage and number in the blue box represents the number of people.<br/><br/></br>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+<img width="1000" alt="Screenshot 2021-08-15 at 12 57 40 AM" src="https://user-images.githubusercontent.com/72267390/129458188-5a3c3bde-60b7-446e-8f87-5b2680d531a4.png">
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### Add Page - Users can add questions here. Whenever you start typing the question it shows the list of questions that has already been added which matches the question text, so that you do not add the question that's already been added. <br/><br/></br>
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Note -- 
+<li>There is also searchbar in Questions and Answers Page through which you can search your questions and answers quickly</li>
+<li>There is also a copy button available next to the question text to copy the question </li>
+<li>Only the person who created the group can delete the group.</li>
