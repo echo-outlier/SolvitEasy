@@ -1,9 +1,9 @@
 ## SolvitEasy
-A React/Redux Web App which helps you to quickly solve mcq questions among your classmates or colleague in a very less consuming time especially when everyone's questions are shuffled.
+A React/Redux Web App which helps you to quickly solve quizes among your classmates or colleague in a very less consuming time especially when everyone's questions are shuffled.
 
-## Hosted App Link 
+## App Link 
 ### https://echo-outlier.github.io/SolvitEasy/
-A demo group is already created to get familiar with the app whose password is <b>demo</b>
+A demo group is already created to get you familiar with the app whose password is <b>demo</b>
 <!-- 
 ##### In starting I created this app thinking about only one group but now I have added group feature through which anyone can create a group and share name and password to everyone through which the other users can access. No one can access the group without the password. -->
 
