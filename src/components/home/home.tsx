@@ -190,7 +190,13 @@ const Home = () => {
               <React.Fragment key={question.id}>
                 <Flex>
                   <Question>
-                    <b>Ques {question?.count}:</b> {question.question}{" "}
+                    <b>Ques {question?.count}:</b>{" "}
+                    {question.question.split("\n").map((str: any) => (
+                      <span>
+                        {str}
+                        <br />
+                      </span>
+                    ))}{" "}
                     <span>
                       {percentage[question.count - 1] ? (
                         <TiTick className="tick" />

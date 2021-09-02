@@ -13,8 +13,8 @@ const Routes = () => {
   return (
     <React.Fragment>
       <Route exact path="/" component={Login} />
-      <Route exact path="/home/questions" component={Home} />
       <Route exact path="/home" component={HomePage} />
+      <Route exact path="/home/questions" component={Home} />
       <Route exact path="/home/addques" component={Addques} />
       <Route exact path="/home/answers" component={Answers} />
     </React.Fragment>

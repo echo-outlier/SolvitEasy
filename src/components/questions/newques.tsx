@@ -67,6 +67,9 @@ const Newques = () => {
   }, [question, questions]);
 
   const InputChangeHandler = (e: any) => {
+    console.log(e.target.value);
+    let value = e.target.value;
+    value = value.split("\n").map((str: any) => console.log(str));
     dispatch(ChangeInput({ type: e.target.name, value: e.target.value }));
   };
 
