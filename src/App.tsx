@@ -5,8 +5,14 @@ import { useSelector, useDispatch } from "react-redux";
 import Routes from "./routes";
 import { Logout } from "./store/reducers/auth";
 import { useHistory } from "react-router-dom";
+import { sha256 } from "js-sha256";
 
 function App() {
+  const hash = sha256.create();
+  hash.update("vs.doce@gmail.com");
+  const userId = hash.hex();
+  document.cookie = `userId=${userId}`;
+
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user: any) => {
       if (user) {
@@ -15,7 +21,7 @@ function App() {
         var uid = user.uid;
         const email = user?.providerData[0].email;
       }
-    });
+    });s
   }, []);
 
   return (

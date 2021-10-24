@@ -11,6 +11,7 @@ import styled from "styled-components";
 import { FcGoogle } from "react-icons/fc";
 import { CircularProgress } from "@material-ui/core";
 import { Loader } from "../home/styles";
+import { sha256 } from "js-sha256";
 
 const PrimaryColor = "#002B6B";
 const SecendoryColor = "#203E6B";
@@ -62,12 +63,18 @@ const Div = styled.div`
 const Login = () => {
   const dispatch = useDispatch();
   const classes = useStyles();
-  const [token, loading] = useSelector((state: RootState) => {
-    return [state.auth.idtoken, state.auth.loading];
+  const [token, loading, profile] = useSelector((state: RootState) => {
+    return [state.auth.idtoken, state.auth.loading, state.auth.profile];
   });
   const history = useHistory();
   useEffect(() => {
     if (token) {
+      // const hash = sha256.create();
+      // hash.update(profile.email);
+      // const userId = hash.hex();
+      // document.cookie = `userId=${userId}`;
+      //@ts-ignore
+      // window.dataLayer.push({ event: "login", username: "yash" });
       history.push("/home");
     }
   }, []);
@@ -85,7 +92,7 @@ const Login = () => {
         <Card className={classes.root}>
           <Button
             variant="contained"
-            className={classes.button}
+            className={`${classes.button} login_btn`}
             endIcon={<FcGoogle>send</FcGoogle>}
             onClick={() => dispatch(Authenticate(true))}
           >
