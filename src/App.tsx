@@ -21,7 +21,7 @@ function App() {
         var uid = user.uid;
         const email = user?.providerData[0].email;
       }
-    });s
+    });
   }, []);
 
   return (
